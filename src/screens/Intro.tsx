@@ -2,7 +2,7 @@ import { AnimatedWrapper } from "@/components/DialogWrapper";
 import React from "react";
 import { useAtom } from "jotai";
 import { screenAtom } from "@/store/screens";
-import { Unlock } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import AudioButton from "@/components/AudioButton";
 import { apiTokenAtom } from "@/store/tokens";
 import { Input } from "@/components/ui/input";
@@ -72,22 +72,24 @@ export const Intro: React.FC = () => {
 
             <AudioButton 
               onClick={handleClick}
-              className="relative z-20 flex items-center justify-center gap-2 rounded-3xl border border-[rgba(255,255,255,0.3)] px-6 py-3 text-sm text-white transition-all duration-200 hover:text-primary disabled:opacity-50"
+              className="relative z-20 flex items-center justify-center gap-2 rounded-3xl border border-blue-500 px-6 py-3 text-sm text-white transition-all duration-200 hover:text-white disabled:opacity-50"
               disabled={!token}
               style={{
                 height: '48px',
                 transition: 'all 0.2s ease-in-out',
-                backgroundColor: 'rgba(0,0,0,0.3)',
+                backgroundColor: '#3b82f6',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 0 15px rgba(34, 197, 254, 0.5)';
+                e.currentTarget.style.backgroundColor = '#2563eb';
+                e.currentTarget.style.boxShadow = '0 0 15px rgba(59, 130, 246, 0.5)';
               }}
               onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#3b82f6';
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              <Unlock className="size-4" />
-              Start Demo
+              <MessageCircle className="size-4" />
+              Talk with our CEO
             </AudioButton>
           </div>
         </div>
