@@ -2,7 +2,6 @@ import { AnimatedWrapper } from "@/components/DialogWrapper";
 import React from "react";
 import { useAtom } from "jotai";
 import { screenAtom } from "@/store/screens";
-import { MessageCircle } from "lucide-react";
 import AudioButton from "@/components/AudioButton";
 import gloriaVideo from "@/assets/video/gloria.mp4";
 
@@ -15,7 +14,7 @@ export const Intro: React.FC = () => {
 
   return (
     <AnimatedWrapper>
-      <div className="flex size-full flex-col items-center justify-center">
+      <div className="flex size-full flex-col items-center justify-end pb-20">
         <video
           src={gloriaVideo}
           autoPlay
@@ -25,10 +24,10 @@ export const Intro: React.FC = () => {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/20" />
-        <div className="relative z-10 flex flex-col items-center justify-center">
+        <div className="relative z-10">
           <AudioButton 
             onClick={handleClick}
-            className="relative z-20 flex items-center justify-center gap-2 rounded-3xl border border-blue-500 px-6 py-3 text-sm text-white transition-all duration-200 hover:text-white"
+            className="relative z-20 flex items-center justify-center rounded-3xl border border-blue-500 px-6 py-3 text-sm text-white transition-all duration-200 hover:text-white"
             style={{
               height: '48px',
               transition: 'all 0.2s ease-in-out',
@@ -43,7 +42,6 @@ export const Intro: React.FC = () => {
               e.currentTarget.style.boxShadow = 'none';
             }}
           >
-            <MessageCircle className="size-4" />
             Talk with our CEO
           </AudioButton>
         </div>
