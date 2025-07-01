@@ -28,16 +28,20 @@ export const Intro: React.FC = () => {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-primary-overlay backdrop-blur-sm" />
-        <div className="relative z-10 flex flex-col items-center gap-2 py-4 px-4 rounded-xl border border-[rgba(255,255,255,0.2)]" 
-          style={{ 
-            fontFamily: 'Inter, sans-serif',
-            background: 'rgba(0,0,0,0.3)'
-          }}>
-          <img src="/public/images/vector.svg" alt="Logo" className="mt-2 mb-1" style={{ width: '40px', height: 'auto' }} />
+        <div className="relative z-10 flex flex-col items-center gap-6 py-8 px-6">
+          <h1 
+            className="text-4xl font-bold text-white mb-4 text-center"
+            style={{ fontFamily: 'Source Code Pro, monospace' }}
+          >
+            <span className="text-white">See AI?</span>{" "}
+            <span style={{ color: '#9EEAFF' }}>Act Natural.</span>
+          </h1>
+          
+          <p className="max-w-[650px] text-center text-base sm:text-lg text-gray-400 mb-8">
+            Have a face-to-face conversation with an AI so real, it feels human—an intelligent agent ready to listen, respond, and act across countless use cases.
+          </p>
 
-          <h1 className="text-xl font-bold text-white mb-1" style={{ fontFamily: 'Source Code Pro, monospace' }}>CVI Demo Playground</h1>
-
-          <div className="flex flex-col gap-2 items-center mt-4">
+          <div className="flex flex-col gap-4 items-center">
             <Input
               type="password"
               value={token || ""}
@@ -47,7 +51,7 @@ export const Intro: React.FC = () => {
                 localStorage.setItem('tavus-token', newToken);
               }}
               placeholder="Enter Tavus API Key"
-              className="w-64 bg-[rgba(255,255,255,0.1)] text-white rounded-3xl border border-[rgba(255,255,255,0.3)] px-4 py-3 text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-80 bg-[rgba(255,255,255,0.1)] text-white rounded-3xl border border-[rgba(255,255,255,0.3)] px-4 py-3 text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary"
               style={{ 
                 color: 'white', 
                 fontFamily: 'Source Code Pro, monospace',
@@ -65,27 +69,27 @@ export const Intro: React.FC = () => {
                 Create an account.
               </a>
             </p>
-          </div>
 
-          <AudioButton 
-            onClick={handleClick}
-            className="relative z-20 flex items-center justify-center gap-2 rounded-3xl border border-[rgba(255,255,255,0.3)] px-4 py-2 text-sm text-white transition-all duration-200 hover:text-primary mt-4 disabled:opacity-50"
-            disabled={!token}
-            style={{
-              height: '44px',
-              transition: 'all 0.2s ease-in-out',
-              backgroundColor: 'rgba(0,0,0,0.3)',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = '0 0 15px rgba(34, 197, 254, 0.5)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = 'none';
-            }}
-          >
-            <Unlock className="size-4" />
-            Unlock Demo
-          </AudioButton>
+            <AudioButton 
+              onClick={handleClick}
+              className="relative z-20 flex items-center justify-center gap-2 rounded-3xl border border-[rgba(255,255,255,0.3)] px-6 py-3 text-sm text-white transition-all duration-200 hover:text-primary disabled:opacity-50"
+              disabled={!token}
+              style={{
+                height: '48px',
+                transition: 'all 0.2s ease-in-out',
+                backgroundColor: 'rgba(0,0,0,0.3)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = '0 0 15px rgba(34, 197, 254, 0.5)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              <Unlock className="size-4" />
+              Start Demo
+            </AudioButton>
+          </div>
         </div>
       </div>
     </AnimatedWrapper>
