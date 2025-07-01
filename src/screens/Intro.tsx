@@ -24,20 +24,8 @@ export const Intro: React.FC = () => {
           playsInline
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-primary-overlay backdrop-blur-sm" />
-        <div className="relative z-10 flex flex-col items-center gap-6 py-8 px-6">
-          <h1 
-            className="text-4xl font-bold text-white mb-4 text-center"
-            style={{ fontFamily: 'Source Code Pro, monospace' }}
-          >
-            <span className="text-white">See AI?</span>{" "}
-            <span style={{ color: '#9EEAFF' }}>Act Natural.</span>
-          </h1>
-          
-          <p className="max-w-[650px] text-center text-base sm:text-lg text-gray-400 mb-8">
-            Have a face-to-face conversation with an AI so real, it feels human—an intelligent agent ready to listen, respond, and act across countless use cases.
-          </p>
-
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="relative z-10 flex flex-col items-center justify-center">
           <AudioButton 
             onClick={handleClick}
             className="relative z-20 flex items-center justify-center gap-2 rounded-3xl border border-blue-500 px-6 py-3 text-sm text-white transition-all duration-200 hover:text-white"
