@@ -2,7 +2,6 @@ import { AnimatedWrapper } from "@/components/DialogWrapper";
 import React from "react";
 import { useAtom } from "jotai";
 import { screenAtom } from "@/store/screens";
-import { Unlock } from "lucide-react";
 import AudioButton from "@/components/AudioButton";
 import { apiTokenAtom } from "@/store/tokens";
 import { Input } from "@/components/ui/input";
@@ -66,13 +65,16 @@ export const Intro: React.FC = () => {
               </a>
             </p>
           </div>
+        </div>
 
+        {/* Button moved to lower part of screen */}
+        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
           <AudioButton 
             onClick={handleClick}
-            className="relative z-20 flex items-center justify-center gap-2 rounded-3xl border border-[rgba(255,255,255,0.3)] px-4 py-2 text-sm text-white transition-all duration-200 hover:text-primary mt-4 disabled:opacity-50"
+            className="relative z-20 flex items-center justify-center gap-2 rounded-3xl border border-[rgba(255,255,255,0.3)] px-8 py-3 text-base text-white transition-all duration-200 hover:text-primary disabled:opacity-50"
             disabled={!token}
             style={{
-              height: '44px',
+              height: '48px',
               transition: 'all 0.2s ease-in-out',
               backgroundColor: 'rgba(0,0,0,0.3)',
             }}
@@ -83,7 +85,6 @@ export const Intro: React.FC = () => {
               e.currentTarget.style.boxShadow = 'none';
             }}
           >
-            <Unlock className="size-4" />
             Unlock Demo
           </AudioButton>
         </div>
