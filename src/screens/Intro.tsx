@@ -3,25 +3,38 @@ import React from "react";
 import { useAtom } from "jotai";
 import { screenAtom } from "@/store/screens";
 import AudioButton from "@/components/AudioButton";
-import gloriaVideo from "@/assets/video/gloria.mp4";
+import { useAtomValue } from "jotai";
+import { settingsAtom } from "@/store/settings";
 
 export const Intro: React.FC = () => {
   const [, setScreenState] = useAtom(screenAtom);
+  const settings = useAtomValue(settingsAtom);
 
   const handleClick = () => {
     setScreenState({ currentScreen: "instructions" });
   };
 
+  // Use the persona ID from settings, or default to the one used in createConversation
+  const personaId = settings.persona || "pd43ffef";
+  
+  // Generate the persona video URL based on the persona ID
+  const personaVideoUrl = `https://tavusapi.com/v2/personas/${personaId}/video`;
+
   return (
     <AnimatedWrapper>
       <div className="flex size-full flex-col items-center justify-end pb-20">
         <video
-          src={gloriaVideo}
+          src={personaVideoUrl}
           autoPlay
           muted
           loop
           playsInline
           className="absolute inset-0 h-full w-full object-cover"
+          onError={(e) => {
+            // Fallback to gloria video if persona video fails to load
+            console.warn("Persona video failed to load, using fallback");
+            e.currentTarget.src = "/assets/video/gloria.mp4";
+          }}
         />
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative z-10">
