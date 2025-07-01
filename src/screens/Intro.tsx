@@ -4,13 +4,10 @@ import { useAtom } from "jotai";
 import { screenAtom } from "@/store/screens";
 import { MessageCircle } from "lucide-react";
 import AudioButton from "@/components/AudioButton";
-import { apiTokenAtom } from "@/store/tokens";
-import { Input } from "@/components/ui/input";
 import gloriaVideo from "@/assets/video/gloria.mp4";
 
 export const Intro: React.FC = () => {
   const [, setScreenState] = useAtom(screenAtom);
-  const [token, setToken] = useAtom(apiTokenAtom);
 
   const handleClick = () => {
     setScreenState({ currentScreen: "instructions" });
@@ -41,57 +38,26 @@ export const Intro: React.FC = () => {
             Have a face-to-face conversation with an AI so real, it feels human—an intelligent agent ready to listen, respond, and act across countless use cases.
           </p>
 
-          <div className="flex flex-col gap-4 items-center">
-            <Input
-              type="password"
-              value={token || ""}
-              onChange={(e) => {
-                const newToken = e.target.value;
-                setToken(newToken);
-                localStorage.setItem('tavus-token', newToken);
-              }}
-              placeholder="Enter Tavus API Key"
-              className="w-80 bg-[rgba(255,255,255,0.1)] text-white rounded-3xl border border-[rgba(255,255,255,0.3)] px-4 py-3 text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary"
-              style={{ 
-                color: 'white', 
-                fontFamily: 'Source Code Pro, monospace',
-              }}
-            />
-
-            <p className="text-sm text-white transition-all duration-200">
-              Don't have a key?{" "}
-              <a
-                href="https://platform.tavus.io/api-keys"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-primary"
-              >
-                Create an account.
-              </a>
-            </p>
-
-            <AudioButton 
-              onClick={handleClick}
-              className="relative z-20 flex items-center justify-center gap-2 rounded-3xl border border-blue-500 px-6 py-3 text-sm text-white transition-all duration-200 hover:text-white disabled:opacity-50"
-              disabled={!token}
-              style={{
-                height: '48px',
-                transition: 'all 0.2s ease-in-out',
-                backgroundColor: '#3b82f6',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#2563eb';
-                e.currentTarget.style.boxShadow = '0 0 15px rgba(59, 130, 246, 0.5)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#3b82f6';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
-            >
-              <MessageCircle className="size-4" />
-              Talk with our CEO
-            </AudioButton>
-          </div>
+          <AudioButton 
+            onClick={handleClick}
+            className="relative z-20 flex items-center justify-center gap-2 rounded-3xl border border-blue-500 px-6 py-3 text-sm text-white transition-all duration-200 hover:text-white"
+            style={{
+              height: '48px',
+              transition: 'all 0.2s ease-in-out',
+              backgroundColor: '#3b82f6',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#2563eb';
+              e.currentTarget.style.boxShadow = '0 0 15px rgba(59, 130, 246, 0.5)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#3b82f6';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            <MessageCircle className="size-4" />
+            Talk with our CEO
+          </AudioButton>
         </div>
       </div>
     </AnimatedWrapper>
