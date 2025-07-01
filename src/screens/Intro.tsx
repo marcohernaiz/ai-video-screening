@@ -3,7 +3,7 @@ import React from "react";
 import { useAtom } from "jotai";
 import { screenAtom } from "@/store/screens";
 import AudioButton from "@/components/AudioButton";
-import carterVideo from "@/assets/video/carter.mp4";
+import gloriaVideo from "@/assets/video/gloria.mp4";
 
 export const Intro: React.FC = () => {
   const [, setScreenState] = useAtom(screenAtom);
@@ -16,7 +16,7 @@ export const Intro: React.FC = () => {
     <AnimatedWrapper>
       <div className="flex size-full flex-col items-center justify-end pb-20">
         <video
-          src={carterVideo}
+          src={gloriaVideo}
           autoPlay
           muted
           loop
